@@ -223,6 +223,7 @@
           <span>•</span>
           <a href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">Direct download APK</a>
         </div>
+        <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">Website v1.0</div>
       </div>
     </footer>
   </main>
@@ -363,42 +364,55 @@
     })();
 
     // ── GitHub latest release version ──────────────────────────────────────
-    // Fetches https://github.com/Jochem2025/eTOL-SmartPay/releases/latest via
-    // the GitHub API — the redirect target (e.g. /releases/tag/v1.0.8) is
-    // returned as html_url in the response, from which the tag is parsed.
+    // 1. Tries the Releases API  → gives tag + APK asset download URL
+    // 2. Falls back to Tags API  → works even without a published release,
+    //    as long as a git tag (e.g. v1.0.8) has been pushed to the repo
     (function loadLatestVersion() {
-      fetch("https://api.github.com/repos/Jochem2025/eTOL-SmartPay/releases/latest", {
-        headers: { "Accept": "application/vnd.github+json" }
-      })
-      .then(function(r) {
-        if (!r.ok) throw new Error("GitHub API " + r.status);
-        return r.json();
-      })
-      .then(function(data) {
-        // Parse tag from the redirect URL: .../releases/tag/v1.0.8
-        const htmlUrl = (data.html_url || "").trim();
-        const tagFromUrl = htmlUrl.split("/releases/tag/").pop();
-        const tag = (tagFromUrl || data.tag_name || "").trim();
+      function applyVersion(tag, htmlUrl, asset) {
         if (!tag) return;
-
-        // Update version label
         const versionEl = document.getElementById("dlVersion");
-        if (versionEl) versionEl.textContent = tag;
+        if (versionEl) versionEl.textContent = tag.trim();
 
-        // Update "Release notes" link to the specific tag page
-        const relNotesEl = document.getElementById("relNotesLink");
-        if (relNotesEl && htmlUrl) relNotesEl.href = htmlUrl;
+        if (htmlUrl) {
+          const relNotesEl = document.getElementById("relNotesLink");
+          if (relNotesEl) relNotesEl.href = htmlUrl;
+        }
+        if (asset) {
+          const dlBtn = document.getElementById("dlBtn");
+          if (dlBtn) dlBtn.href = asset.browser_download_url;
+        }
+      }
 
-        // Update download button to the versioned APK asset
-        const asset = (data.assets || []).find(function(a) {
-          return a.name.toLowerCase().endsWith(".apk");
+      const API = "https://api.github.com/repos/Jochem2025/eTOL-SmartPay";
+      const HEADERS = { "Accept": "application/vnd.github+json" };
+
+      // ── Step 1: Releases API ──────────────────────────────────────────────
+      fetch(API + "/releases/latest", { headers: HEADERS })
+        .then(function(r) {
+          if (!r.ok) throw new Error("no release (" + r.status + ")");
+          return r.json();
+        })
+        .then(function(data) {
+          const htmlUrl = (data.html_url || "").trim();
+          const tag = htmlUrl.split("/releases/tag/").pop() || data.tag_name || "";
+          const asset = (data.assets || []).find(function(a) {
+            return a.name.toLowerCase().endsWith(".apk");
+          });
+          applyVersion(tag, htmlUrl, asset);
+        })
+        // ── Step 2: Tags API fallback ─────────────────────────────────────
+        .catch(function() {
+          fetch(API + "/tags", { headers: HEADERS })
+            .then(function(r) { return r.json(); })
+            .then(function(tags) {
+              if (Array.isArray(tags) && tags.length > 0) {
+                applyVersion(tags[0].name, null, null);
+              }
+            })
+            .catch(function(err) {
+              console.warn("eTOL versie ophalen mislukt:", err);
+            });
         });
-        const dlBtn = document.getElementById("dlBtn");
-        if (asset && dlBtn) dlBtn.href = asset.browser_download_url;
-      })
-      .catch(function(err) {
-        console.warn("eTOL versie ophalen mislukt:", err);
-      });
     })();
   </script>
 </body>
