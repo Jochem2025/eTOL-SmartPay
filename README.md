@@ -28,11 +28,10 @@ De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL w
 - 🧭 **Eerste keer starten wizard**  
   Een begeleid onboardingproces bij de eerste keer opstarten van de app.
 
-
 <p align="center">
-  <img src="screenshots/SmartPay_4.jpg" width="250" />
-  <img src="screenshots/SmartPay_5.jpg" width="250" />
-  <img src="screenshots/SmartPay_6.jpg" width="250" />
+  <img src="SmartPay_4.jpg" width="250" />
+  <img src="SmartPay_5.jpg" width="250" />
+  <img src="SmartPay_6.jpg" width="250" />
 </p>
 
 ## Belangrijk
@@ -42,7 +41,7 @@ De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL w
 - 🌐 **Betaling verloopt volledig via officiële e‑TOL en bankomgeving**
 
 <p align="center">
-  <img src="screenshots/SmartPay_7.jpg" width="250" />
+  <img src="SmartPay_7.jpg" width="250" />
 </p>
 
 ## Disclaimer
