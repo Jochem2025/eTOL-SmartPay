@@ -30,7 +30,7 @@
       <nav class="nav">
         <a class="chip" href="#screenshots">Screenshots</a>
         <a class="chip" href="#download">Download</a>
-        <a class="chip" href="#future">Future releases</a>
+        <a class="chip" href="#future">Toekomstige versies</a>
         <a class="chip" href="https://github.com/Jochem2025/eTOL-SmartPay" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
@@ -56,17 +56,21 @@
         <div class="ctaRow" id="download">
           <a class="btn btnPrimary"
              href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">
-            Download nieuwste APK
-            <small>• latest release</small>
+            <svg class="dlIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 20h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+            Download APK
+            <small>nieuwste versie</small>
           </a>
 
           <a class="btn"
              href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest"
              target="_blank" rel="noopener">
-            Bekijk release notes
+            Release notes
           </a>
 
-          <a class="btn" href="#screenshots">Bekijk screenshots</a>
+          <a class="btn" href="#screenshots">Screenshots</a>
         </div>
 
         <p class="note">
@@ -80,9 +84,9 @@
           <span class="panelTitle">Highlights</span>
 
           <div class="panelTopRight">
-            <span class="panelSubtitle">Theme matched to screenshots</span>
+            <span class="panelSubtitle">Schermafbeeldingen</span>
             <a href="#screenshots" title="Bekijk screenshots">
-              <img class="panelShot" src="SmartPay_1.jpg" alt="eTOL SmartPay screenshot 1">
+              <img class="panelShot" src="screenshots/SmartPay_1.jpg" alt="eTOL SmartPay screenshot 1">
             </a>
           </div>
         </div>
@@ -151,8 +155,8 @@
     <!-- FUTURE -->
     <section id="future">
       <div class="sectionTitle">
-        <h2>Future releases</h2>
-        <div class="sectionHint">Ideeën & roadmap</div>
+        <h2>Toekomstige versies</h2>
+        <div class="sectionHint">Ideeën &amp; roadmap</div>
       </div>
 
       <div class="card">
@@ -173,17 +177,17 @@
     <section id="screenshots">
       <div class="sectionTitle">
         <h2>Screenshots</h2>
-        <div class="sectionHint">SmartPay_1.jpg t/m SmartPay_7.jpg</div>
+        <div class="sectionHint">Klik voor volledige weergave</div>
       </div>
 
       <div class="shots">
-        <a class="shot" href="SmartPay_1.jpg" target="_blank" rel="noopener"><img src="SmartPay_1.jpg" alt="SmartPay screenshot 1"></a>
-        <a class="shot" href="SmartPay_2.jpg" target="_blank" rel="noopener"><img src="SmartPay_2.jpg" alt="SmartPay screenshot 2"></a>
-        <a class="shot" href="SmartPay_3.jpg" target="_blank" rel="noopener"><img src="SmartPay_3.jpg" alt="SmartPay screenshot 3"></a>
-        <a class="shot" href="SmartPay_4.jpg" target="_blank" rel="noopener"><img src="SmartPay_4.jpg" alt="SmartPay screenshot 4"></a>
-        <a class="shot" href="SmartPay_5.jpg" target="_blank" rel="noopener"><img src="SmartPay_5.jpg" alt="SmartPay screenshot 5"></a>
-        <a class="shot" href="SmartPay_6.jpg" target="_blank" rel="noopener"><img src="SmartPay_6.jpg" alt="SmartPay screenshot 6"></a>
-        <a class="shot" href="SmartPay_7.jpg" target="_blank" rel="noopener"><img src="SmartPay_7.jpg" alt="SmartPay screenshot 7"></a>
+        <a class="shot" href="screenshots/SmartPay_1.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_1.jpg" alt="SmartPay screenshot 1"></a>
+        <a class="shot" href="screenshots/SmartPay_2.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_2.jpg" alt="SmartPay screenshot 2"></a>
+        <a class="shot" href="screenshots/SmartPay_3.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_3.jpg" alt="SmartPay screenshot 3"></a>
+        <a class="shot" href="screenshots/SmartPay_4.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_4.jpg" alt="SmartPay screenshot 4"></a>
+        <a class="shot" href="screenshots/SmartPay_5.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_5.jpg" alt="SmartPay screenshot 5"></a>
+        <a class="shot" href="screenshots/SmartPay_6.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_6.jpg" alt="SmartPay screenshot 6"></a>
+        <a class="shot" href="screenshots/SmartPay_7.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_7.jpg" alt="SmartPay screenshot 7"></a>
       </div>
     </section>
 
@@ -216,7 +220,7 @@
      * - background = gemiddelde kleur van de randen (vaak app-background)
      * - accents = meest verzadigde kleuren uit het beeld (buttons/highlights)
      */
-    const THEME_SOURCE = "SmartPay_1.jpg";
+    const THEME_SOURCE = "screenshots/SmartPay_1.jpg";
 
     function rgbToHex(r,g,b){
       const toHex = (n)=> n.toString(16).padStart(2,'0');
