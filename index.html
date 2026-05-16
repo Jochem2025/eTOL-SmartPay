@@ -70,7 +70,7 @@
             <small id="dlVersion" style="margin-left:auto;opacity:0.7;font-size:0.7em;">nieuwste versie</small>
           </a>
 
-          <a class="btn"
+          <a class="btn" id="relNotesLink"
              href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest"
              target="_blank" rel="noopener">
             Release notes
@@ -363,6 +363,9 @@
     })();
 
     // ── GitHub latest release version ──────────────────────────────────────
+    // Fetches https://github.com/Jochem2025/eTOL-SmartPay/releases/latest via
+    // the GitHub API — the redirect target (e.g. /releases/tag/v1.0.8) is
+    // returned as html_url in the response, from which the tag is parsed.
     (function loadLatestVersion() {
       fetch("https://api.github.com/repos/Jochem2025/eTOL-SmartPay/releases/latest", {
         headers: { "Accept": "application/vnd.github+json" }
@@ -372,12 +375,21 @@
         return r.json();
       })
       .then(function(data) {
-        const tag = (data.tag_name || "").trim();
+        // Parse tag from the redirect URL: .../releases/tag/v1.0.8
+        const htmlUrl = (data.html_url || "").trim();
+        const tagFromUrl = htmlUrl.split("/releases/tag/").pop();
+        const tag = (tagFromUrl || data.tag_name || "").trim();
         if (!tag) return;
 
+        // Update version label
         const versionEl = document.getElementById("dlVersion");
         if (versionEl) versionEl.textContent = tag;
 
+        // Update "Release notes" link to the specific tag page
+        const relNotesEl = document.getElementById("relNotesLink");
+        if (relNotesEl && htmlUrl) relNotesEl.href = htmlUrl;
+
+        // Update download button to the versioned APK asset
         const asset = (data.assets || []).find(function(a) {
           return a.name.toLowerCase().endsWith(".apk");
         });
