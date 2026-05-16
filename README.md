@@ -32,9 +32,6 @@ De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL w
 - 🔒 **Geen opslag van gevoelige of financiële gegevens**
 - 🌐 **Betaling verloopt volledig via officiële e‑TOL en bankomgeving**
 
-<p align="center">
-  <img src="SmartPay_7.jpg" width="250" />
-</p>
 ## Disclaimer
 Deze applicatie is een **onofficiële Android-applicatie** en staat los van de officiële e‑TOL organisatie.
 
