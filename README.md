@@ -6,9 +6,9 @@ De app begeleidt gebruikers automatisch stap voor stap bij het invoeren van gege
 
 De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL website en de beveiligde bankomgeving van de gebruiker. **eTOL SmartPay slaat geen betaalgegevens op** en fungeert uitsluitend als hulpmiddel om het proces sneller, eenvoudiger en betrouwbaarder te maken.
 <p align="center">
-  <img src="SmartPay_1.jpg" width="250" />
-  <img src="SmartPay_2.jpg" width="250" />
-  <img src="SmartPay_3.jpg" width="250" />
+  <img src="screenshots/SmartPay_1.jpg" width="250" />
+  <img src="screenshots/SmartPay_2.jpg" width="250" />
+  <img src="screenshots/SmartPay_3.jpg" width="250" />
 </p>
 ## Functionaliteiten
 - 🚗 **Opslaan van meerdere kentekens**  
@@ -17,9 +17,9 @@ De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL w
 - 📧 **Herbruikbaar e-mailadres**  
   Het ingevoerde e-mailadres wordt onthouden, zodat dit niet telkens opnieuw ingevoerd hoeft te worden.
 <p align="center">
-  <img src="SmartPay_4.jpg" width="250" />
-  <img src="SmartPay_5.jpg" width="250" />
-  <img src="SmartPay_6.jpg" width="250" />
+  <img src="screenshots/SmartPay_4.jpg" width="250" />
+  <img src="screenshots/SmartPay_5.jpg" width="250" />
+  <img src="screenshots/SmartPay_6.jpg" width="250" />
 </p>
 
 - 📊 **Tolsessie geschiedenis**  
