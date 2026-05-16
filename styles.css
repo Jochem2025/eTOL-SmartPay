@@ -375,11 +375,11 @@ h2 { margin: 0; font-size: 17px; letter-spacing: -.2px; }
 /* ─── Screenshots grid ──────────────────────────────────────────────────────── */
 .shots {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
-@media (max-width: 1020px) { .shots { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 640px)  { .shots { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+@media (max-width: 860px)  { .shots { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@media (max-width: 480px)  { .shots { grid-template-columns: 1fr; gap: 10px; } }
 
 .shot {
   border-radius: 18px;
@@ -396,9 +396,9 @@ h2 { margin: 0; font-size: 17px; letter-spacing: -.2px; }
 .shot:hover  { transform: translateY(-3px); box-shadow: 0 22px 52px rgba(0,0,0,.32); }
 .shot:active { transform: scale(.98); }
 .shot img {
-  width: 100%; height: auto; display: block;
-  aspect-ratio: 9 / 19.5;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .shot::after {
   content: "";
