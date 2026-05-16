@@ -367,24 +367,26 @@
       fetch("https://api.github.com/repos/Jochem2025/eTOL-SmartPay/releases/latest", {
         headers: { "Accept": "application/vnd.github+json" }
       })
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(data => {
-        const tag  = data.tag_name || "";
-        const versionEl = document.getElementById("dlVersion");
-        const dlBtn     = document.getElementById("dlBtn");
+      .then(function(r) {
+        if (!r.ok) throw new Error("GitHub API " + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        const tag = (data.tag_name || "").trim();
         if (!tag) return;
 
-        // Update version label
+        const versionEl = document.getElementById("dlVersion");
         if (versionEl) versionEl.textContent = tag;
 
-        // Update APK href to versioned filename if asset exists
-        // Pattern: eTOL-SmartPay-v1.0.6.apk
-        const asset = (data.assets || []).find(a => a.name.endsWith(".apk"));
-        if (asset && dlBtn) {
-          dlBtn.href = asset.browser_download_url;
-        }
+        const asset = (data.assets || []).find(function(a) {
+          return a.name.toLowerCase().endsWith(".apk");
+        });
+        const dlBtn = document.getElementById("dlBtn");
+        if (asset && dlBtn) dlBtn.href = asset.browser_download_url;
       })
-      .catch(() => { /* silently keep fallback */ });
+      .catch(function(err) {
+        console.warn("eTOL versie ophalen mislukt:", err);
+      });
     })();
   </script>
 </body>
