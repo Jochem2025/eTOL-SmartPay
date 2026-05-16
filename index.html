@@ -57,14 +57,14 @@
         </p>
 
         <div class="ctaRow" id="download">
-          <a class="btn btnPrimary"
+          <a class="btn btnPrimary" id="dlBtn"
              href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">
             <svg class="dlIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M4 20h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
             Download APK
-            <small>nieuwste versie</small>
+            <small id="dlVersion">nieuwste versie</small>
           </a>
 
           <a class="btn"
@@ -343,6 +343,31 @@
         catch (e) { console.warn("Auto theme failed, using fallback.", e); }
       };
       img.onerror = () => console.warn("Theme source image not found:", THEME_SOURCE);
+    })();
+
+    // ── GitHub latest release version ──────────────────────────────────────
+    (function loadLatestVersion() {
+      fetch("https://api.github.com/repos/Jochem2025/eTOL-SmartPay/releases/latest", {
+        headers: { "Accept": "application/vnd.github+json" }
+      })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        const tag  = data.tag_name || "";
+        const versionEl = document.getElementById("dlVersion");
+        const dlBtn     = document.getElementById("dlBtn");
+        if (!tag) return;
+
+        // Update version label
+        if (versionEl) versionEl.textContent = tag;
+
+        // Update APK href to versioned filename if asset exists
+        // Pattern: eTOL-SmartPay-v1.0.6.apk
+        const asset = (data.assets || []).find(a => a.name.endsWith(".apk"));
+        if (asset && dlBtn) {
+          dlBtn.href = asset.browser_download_url;
+        }
+      })
+      .catch(() => { /* silently keep fallback */ });
     })();
   </script>
 </body>
