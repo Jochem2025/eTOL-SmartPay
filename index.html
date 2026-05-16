@@ -6,13 +6,10 @@
   <title>eTOL SmartPay • Android</title>
   <meta name="description" content="eTOL SmartPay is een Android betaalassistent die tolbetalingen via de officiële e‑TOL omgeving sneller en overzichtelijker maakt — met volledige controle over wanneer jij betaalt." />
 
-  <!-- Font (optioneel, maar modern) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Jouw externe CSS bestand -->
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,11 +18,9 @@
   <header>
     <div class="wrap topbar">
       <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M7 7h10M7 12h10M7 17h7" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
+        <!-- Icoon-only logo -->
+        <img src="etol-icon.png" class="brandIcon" alt="eTOL SmartPay icoon">
+
         <div class="brandText">
           <div class="brandName">eTOL SmartPay</div>
           <div class="brandSub">Android • betaalassistent</div>
@@ -55,7 +50,7 @@
         <p class="lead">
           <strong>eTOL SmartPay</strong> versnelt het invullen van kenteken, e‑mail en ritten, en brengt je daarna naar de officiële e‑TOL betaalomgeving.
           <br><br>
-          <strong>De kracht:</strong> jij houdt zélf de regie — je bepaalt <em>wanneer</em> je betaalt. Geen automatisch proces dat op de achtergrond beslist, maar een duidelijke flow met controle op het juiste moment.
+          <strong>De kracht:</strong> je houdt zélf de regie — jij bepaalt wanneer je betaalt. Geen automatisch proces waar je geen controle op hebt, maar een duidelijke flow waarbij jij het moment kiest.
         </p>
 
         <div class="ctaRow" id="download">
@@ -178,31 +173,17 @@
     <section id="screenshots">
       <div class="sectionTitle">
         <h2>Screenshots</h2>
-        <div class="sectionHint"></div>
+        <div class="sectionHint">SmartPay_1.jpg t/m SmartPay_7.jpg</div>
       </div>
 
       <div class="shots">
-        <a class="shot" href="SmartPay_1.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_1.jpg" alt="SmartPay screenshot 1">
-        </a>
-        <a class="shot" href="SmartPay_2.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_2.jpg" alt="SmartPay screenshot 2">
-        </a>
-        <a class="shot" href="SmartPay_3.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_3.jpg" alt="SmartPay screenshot 3">
-        </a>
-        <a class="shot" href="SmartPay_4.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_4.jpg" alt="SmartPay screenshot 4">
-        </a>
-        <a class="shot" href="SmartPay_5.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_5.jpg" alt="SmartPay screenshot 5">
-        </a>
-        <a class="shot" href="SmartPay_6.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_6.jpg" alt="SmartPay screenshot 6">
-        </a>
-        <a class="shot" href="SmartPay_7.jpg" target="_blank" rel="noopener">
-          <img src="SmartPay_7.jpg" alt="SmartPay screenshot 7">
-        </a>
+        <a class="shot" href="SmartPay_1.jpg" target="_blank" rel="noopener"><img src="SmartPay_1.jpg" alt="SmartPay screenshot 1"></a>
+        <a class="shot" href="SmartPay_2.jpg" target="_blank" rel="noopener"><img src="SmartPay_2.jpg" alt="SmartPay screenshot 2"></a>
+        <a class="shot" href="SmartPay_3.jpg" target="_blank" rel="noopener"><img src="SmartPay_3.jpg" alt="SmartPay screenshot 3"></a>
+        <a class="shot" href="SmartPay_4.jpg" target="_blank" rel="noopener"><img src="SmartPay_4.jpg" alt="SmartPay screenshot 4"></a>
+        <a class="shot" href="SmartPay_5.jpg" target="_blank" rel="noopener"><img src="SmartPay_5.jpg" alt="SmartPay screenshot 5"></a>
+        <a class="shot" href="SmartPay_6.jpg" target="_blank" rel="noopener"><img src="SmartPay_6.jpg" alt="SmartPay screenshot 6"></a>
+        <a class="shot" href="SmartPay_7.jpg" target="_blank" rel="noopener"><img src="SmartPay_7.jpg" alt="SmartPay screenshot 7"></a>
       </div>
     </section>
 
@@ -234,10 +215,8 @@
      * Auto-theme from screenshot palette:
      * - background = gemiddelde kleur van de randen (vaak app-background)
      * - accents = meest verzadigde kleuren uit het beeld (buttons/highlights)
-     *
-     * Bron: SmartPay_1.jpg (pas aan als je screenshots in een map staan)
      */
-    const THEME_SOURCE = "SmartPay_1.jpg"; // bv. "screenshots/SmartPay_1.jpg"
+    const THEME_SOURCE = "SmartPay_1.jpg";
 
     function rgbToHex(r,g,b){
       const toHex = (n)=> n.toString(16).padStart(2,'0');
