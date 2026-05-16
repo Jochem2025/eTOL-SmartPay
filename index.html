@@ -6,310 +6,17 @@
   <title>eTOL SmartPay • Android</title>
   <meta name="description" content="eTOL SmartPay is een Android betaalassistent die tolbetalingen via de officiële e‑TOL omgeving sneller en overzichtelijker maakt — met volledige controle over wanneer jij betaalt." />
 
+  <!-- Font (optioneel, maar modern) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      /* Fallback theme (wordt overschreven door screenshot-palette script) */
-      --bg0:#050B1A;
-      --bg1:#070F2A;
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.10);
-      --border: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --accent:#0078D4;
-      --accent2:#00B7C3;
-      --ok:#39D98A;
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
-      --radius: 22px;
-      --max: 1120px;
-
-      /* Used by the script (no need to edit) */
-      --accentGlow: rgba(0,120,212,.28);
-      --accent2Glow: rgba(0,183,195,.22);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(1200px 800px at 20% -10%, var(--accentGlow), transparent 60%),
-        radial-gradient(900px 700px at 90% 10%, var(--accent2Glow), transparent 55%),
-        radial-gradient(1100px 900px at 60% 110%, var(--accentGlow), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
-
-    /* subtle noise overlay */
-    .noise{
-      pointer-events:none;
-      position:fixed; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-      opacity:.10;
-      mix-blend-mode: overlay;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-
-    header{
-      position: sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0));
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display:flex; gap:12px; align-items:center;
-      font-weight:700; letter-spacing:.2px;
-      min-width: 220px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 14px 30px rgba(0,0,0,.28);
-      display:grid; place-items:center;
-      border:1px solid rgba(255,255,255,.22);
-      flex: 0 0 auto;
-    }
-    .logo svg{ opacity:.96; }
-    .nav{
-      display:flex; align-items:center; gap:10px;
-      color: var(--muted);
-      font-size: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .chip{
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      transition: .18s ease;
-    }
-    .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
-
-    .hero{
-      padding: 44px 0 18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
-      align-items:center;
-    }
-    @media (max-width: 920px){
-      .hero{ grid-template-columns: 1fr; padding-top: 26px; }
-    }
-
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:999px;background: var(--ok);
-      box-shadow: 0 0 0 6px rgba(57,217,138,.12);
-    }
-
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.9px;
-    }
-    .lead{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 62ch;
-    }
-
-    .ctaRow{
-      display:flex; gap:12px; flex-wrap: wrap;
-      margin-top: 18px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      font-weight: 600;
-      font-size: 14px;
-      transition: .18s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,.18);
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
-    .btnPrimary{
-      border: 1px solid rgba(255,255,255,.18);
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
-    }
-    .btnPrimary:hover{ filter: brightness(1.06); }
-    .btn small{ font-weight: 600; color: rgba(255,255,255,.85); }
-
-    .panel{
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .panelTop{
-      padding: 18px 18px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; justify-content:space-between;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .panelBody{
-      padding: 18px;
-      display:grid;
-      gap: 12px;
-    }
-    .kpi{
-      display:grid;
-      gap:6px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(0,0,0,.14);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .kpi strong{ font-size: 14px; }
-    .kpi span{ color: var(--muted2); font-size: 13px; line-height:1.4; }
-
-    section{ padding: 14px 0 0; }
-    .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 14px;
-      margin: 26px 0 12px;
-    }
-    h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-    }
-    .sectionHint{
-      color: var(--muted2);
-      font-size: 13px;
-    }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 920px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      box-shadow: 0 18px 45px rgba(0,0,0,.22);
-      padding: 16px;
-      transition: .18s ease;
-      overflow:hidden;
-    }
-    .card:hover{ transform: translateY(-2px); }
-    .card h3{
-      margin: 0 0 6px;
-      font-size: 15px;
-      letter-spacing: -0.2px;
-    }
-    .card p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height:1.55;
-    }
-    .icon{
-      width:42px; height:42px; border-radius: 14px;
-      display:grid; place-items:center;
-      margin-bottom: 10px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-
-    .shots{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 1040px){ .shots{ grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 760px){ .shots{ grid-template-columns: repeat(2, 1fr); } }
-    .shot{
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      overflow:hidden;
-      box-shadow: 0 18px 45px rgba(0,0,0,.22);
-      position:relative;
-      transition: .18s ease;
-    }
-    .shot:hover{ transform: translateY(-2px); }
-    .shot img{
-      width:100%; height:auto; display:block;
-      aspect-ratio: 9 / 19.5;
-      object-fit: cover;
-    }
-    .shot::after{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(400px 250px at 50% 0%, rgba(255,255,255,.10), transparent 55%);
-      pointer-events:none;
-    }
-
-    .list{
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    .list li{ margin: 6px 0; }
-
-    footer{
-      padding: 28px 0 44px;
-      color: var(--muted2);
-      font-size: 13px;
-    }
-    .fineprint{
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-top: 26px;
-      padding-top: 18px;
-      display:grid;
-      gap: 8px;
-    }
-    .fineprint a{
-      color: var(--muted);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    /* small helper */
-    .muted{ color: var(--muted2); }
-  </style>
+  <!-- Jouw externe CSS bestand -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="noise"></div>
+  <div class="noise" aria-hidden="true"></div>
 
   <header>
     <div class="wrap topbar">
@@ -319,9 +26,9 @@
             <path d="M7 7h10M7 12h10M7 17h7" stroke="white" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <div>
-          eTOL SmartPay
-          <div style="font-size:12px;color:var(--muted);font-weight:600;">Android • betaalassistent</div>
+        <div class="brandText">
+          <div class="brandName">eTOL SmartPay</div>
+          <div class="brandSub">Android • betaalassistent</div>
         </div>
       </div>
 
@@ -335,53 +42,67 @@
   </header>
 
   <main class="wrap">
+    <!-- HERO -->
     <section class="hero">
-      <div>
+      <div class="heroLeft">
         <div class="badge">
-          <span class="dot"></span>
+          <span class="dot" aria-hidden="true"></span>
           Sneller tol betalen via de officiële e‑TOL omgeving • zonder betaalgegevens op te slaan
         </div>
 
         <h1>Snel, simpel én met volledige controle.</h1>
+
         <p class="lead">
           <strong>eTOL SmartPay</strong> versnelt het invullen van kenteken, e‑mail en ritten, en brengt je daarna naar de officiële e‑TOL betaalomgeving.
           <br><br>
-          <strong>De kracht:</strong> je houdt zélf de regie — jij bepaalt wanneer je betaalt. Geen automatisch proces dat op de achtergrond “voor je” beslist, maar een duidelijke flow met controle op het juiste moment.
+          <strong>De kracht:</strong> jij houdt zélf de regie — je bepaalt <em>wanneer</em> je betaalt. Geen automatisch proces dat op de achtergrond beslist, maar een duidelijke flow met controle op het juiste moment.
         </p>
 
         <div class="ctaRow" id="download">
-          <!-- Direct latest release asset link -->
-          <a class="btn btnPrimary" href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">
+          <a class="btn btnPrimary"
+             href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">
             Download nieuwste APK
             <small>• latest release</small>
           </a>
 
-          <a class="btn" href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest" target="_blank" rel="noopener">
+          <a class="btn"
+             href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest"
+             target="_blank" rel="noopener">
             Bekijk release notes
           </a>
 
           <a class="btn" href="#screenshots">Bekijk screenshots</a>
         </div>
 
-        <p style="margin:14px 0 0;color:var(--muted2);font-size:13px;line-height:1.5;">
+        <p class="note">
           Alleen beschikbaar voor Android. Gebruik is volledig op eigen risico (zie disclaimer onderaan).
         </p>
       </div>
 
+      <!-- HIGHLIGHTS PANEL -->
       <aside class="panel">
         <div class="panelTop">
-          <span>Highlights</span>
-          <span style="opacity:.85;">Theme matched to screenshots</span>
+          <span class="panelTitle">Highlights</span>
+
+          <div class="panelTopRight">
+            <span class="panelSubtitle">Theme matched to screenshots</span>
+            <a href="#screenshots" title="Bekijk screenshots">
+              <img class="panelShot" src="SmartPay_1.jpg" alt="eTOL SmartPay screenshot 1">
+            </a>
+          </div>
         </div>
+
         <div class="panelBody">
           <div class="kpi">
             <strong>Meerdere kentekens (wagenpark)</strong>
             <span>Na betaling worden gebruikte kentekens automatisch opgeslagen, zodat je snel kunt wisselen en zelf kiest voor welk voertuig je betaalt.</span>
           </div>
+
           <div class="kpi">
             <strong>Herbruikbaar e-mailadres</strong>
             <span>Het e-mailadres wordt lokaal onthouden, zodat je het niet telkens opnieuw hoeft in te voeren.</span>
           </div>
+
           <div class="kpi">
             <strong>Tolsessie historie + eerste-start wizard</strong>
             <span>Bekijk eerdere sessies en start met een duidelijke onboarding wizard.</span>
@@ -390,6 +111,7 @@
       </aside>
     </section>
 
+    <!-- FEATURES -->
     <section>
       <div class="sectionTitle">
         <h2>Functionaliteiten</h2>
@@ -431,6 +153,7 @@
       </div>
     </section>
 
+    <!-- FUTURE -->
     <section id="future">
       <div class="sectionTitle">
         <h2>Future releases</h2>
@@ -438,34 +161,52 @@
       </div>
 
       <div class="card">
-        <h3 style="margin-top:0;">Wat staat er op de planning?</h3>
+        <h3 class="cardTitle">Wat staat er op de planning?</h3>
         <ul class="list">
-          <li><strong>GPS-ondersteuning (idee):</strong> de app kan (optioneel) meekijken of je over een toltraject hebt gereden en daarna een <em>suggestie</em> geven om een sessie te betalen — zodat je het niet vergeet, maar je houdt altijd zelf de controle.</li>
+          <li>
+            <strong>GPS-ondersteuning (idee):</strong> de app kan (optioneel) meekijken of je over een toltraject hebt gereden en daarna een <em>suggestie</em> geven om een sessie te betalen — zodat je het zelf niet vergeet, maar je houdt altijd de controle.
+          </li>
           <li>Verbeteringen in gebruiksgemak, performance en stabiliteit op basis van feedback.</li>
         </ul>
-        <p class="muted" style="margin:10px 0 0;">
+        <p class="muted small">
           GPS is bedoeld als herinnering/suggestie (geen automatische betaling en geen verplichting).
         </p>
       </div>
     </section>
 
+    <!-- SCREENSHOTS -->
     <section id="screenshots">
       <div class="sectionTitle">
         <h2>Screenshots</h2>
-        <div class="sectionHint">SmartPay_1.jpg t/m SmartPay_7.jpg</div>
+        <div class="sectionHint"></div>
       </div>
 
       <div class="shots">
-        <a class="shot" href="SmartPay_1.jpg" target="_blank" rel="noopener"><img src="SmartPay_1.jpg" alt="SmartPay_1"></a>
-        <a class="shot" href="SmartPay_2.jpg" target="_blank" rel="noopener"><img src="SmartPay_2.jpg" alt="SmartPay_2"></a>
-        <a class="shot" href="SmartPay_3.jpg" target="_blank" rel="noopener"><img src="SmartPay_3.jpg" alt="SmartPay_3"></a>
-        <a class="shot" href="SmartPay_4.jpg" target="_blank" rel="noopener"><img src="SmartPay_4.jpg" alt="SmartPay_4"></a>
-        <a class="shot" href="SmartPay_5.jpg" target="_blank" rel="noopener"><img src="SmartPay_5.jpg" alt="SmartPay_5"></a>
-        <a class="shot" href="SmartPay_6.jpg" target="_blank" rel="noopener"><img src="SmartPay_6.jpg" alt="SmartPay_6"></a>
-        <a class="shot" href="SmartPay_7.jpg" target="_blank" rel="noopener"><img src="SmartPay_7.jpg" alt="SmartPay_7"></a>
+        <a class="shot" href="SmartPay_1.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_1.jpg" alt="SmartPay screenshot 1">
+        </a>
+        <a class="shot" href="SmartPay_2.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_2.jpg" alt="SmartPay screenshot 2">
+        </a>
+        <a class="shot" href="SmartPay_3.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_3.jpg" alt="SmartPay screenshot 3">
+        </a>
+        <a class="shot" href="SmartPay_4.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_4.jpg" alt="SmartPay screenshot 4">
+        </a>
+        <a class="shot" href="SmartPay_5.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_5.jpg" alt="SmartPay screenshot 5">
+        </a>
+        <a class="shot" href="SmartPay_6.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_6.jpg" alt="SmartPay screenshot 6">
+        </a>
+        <a class="shot" href="SmartPay_7.jpg" target="_blank" rel="noopener">
+          <img src="SmartPay_7.jpg" alt="SmartPay screenshot 7">
+        </a>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
       <div class="fineprint">
         <div><strong>Disclaimer</strong></div>
@@ -477,9 +218,11 @@
         <div>
           <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
         </div>
-        <div>
-          <a href="https://github.com/Jochem2025/eTOL-SmartPay" target="_blank" rel="noopener">Repository</a> •
-          <a href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest" target="_blank" rel="noopener">Latest release</a> •
+        <div class="footerLinks">
+          <a href="https://github.com/Jochem2025/eTOL-SmartPay" target="_blank" rel="noopener">Repository</a>
+          <span>•</span>
+          <a href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest" target="_blank" rel="noopener">Latest release</a>
+          <span>•</span>
           <a href="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">Direct download APK</a>
         </div>
       </div>
@@ -489,20 +232,17 @@
   <script>
     /**
      * Auto-theme from screenshot palette:
-     * - background = average color of the image edges (often UI background)
-     * - accents = most saturated colors sampled across the image
+     * - background = gemiddelde kleur van de randen (vaak app-background)
+     * - accents = meest verzadigde kleuren uit het beeld (buttons/highlights)
      *
-     * Uses SmartPay_1.jpg by default. Change THEME_SOURCE if needed.
+     * Bron: SmartPay_1.jpg (pas aan als je screenshots in een map staan)
      */
-    const THEME_SOURCE = "SmartPay_1.jpg"; // or "screenshots/SmartPay_1.jpg"
-
-    function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+    const THEME_SOURCE = "SmartPay_1.jpg"; // bv. "screenshots/SmartPay_1.jpg"
 
     function rgbToHex(r,g,b){
       const toHex = (n)=> n.toString(16).padStart(2,'0');
       return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
     }
-
     function rgbToHsl(r,g,b){
       r/=255; g/=255; b/=255;
       const max = Math.max(r,g,b), min = Math.min(r,g,b);
@@ -520,21 +260,17 @@
       }
       return { h, s, l };
     }
-
-    function mix(rgbA, rgbB, t){
+    function mix(a, b, t){
       return {
-        r: Math.round(rgbA.r + (rgbB.r - rgbA.r)*t),
-        g: Math.round(rgbA.g + (rgbB.g - rgbA.g)*t),
-        b: Math.round(rgbA.b + (rgbB.b - rgbA.b)*t),
+        r: Math.round(a.r + (b.r - a.r)*t),
+        g: Math.round(a.g + (b.g - a.g)*t),
+        b: Math.round(a.b + (b.b - a.b)*t),
       };
     }
 
-    function parseRgb(obj){ return { r: obj.r|0, g: obj.g|0, b: obj.b|0 }; }
-
-    function setTheme({bg, accent1, accent2}){
+    function setTheme(bg, accent1, accent2){
       const root = document.documentElement.style;
 
-      // Create bg gradient pair: slightly darker & slightly lighter
       const bg0 = mix(bg, {r:0,g:0,b:0}, 0.18);
       const bg1 = mix(bg, {r:255,g:255,b:255}, 0.06);
 
@@ -543,20 +279,18 @@
       root.setProperty("--accent", rgbToHex(accent1.r,accent1.g,accent1.b));
       root.setProperty("--accent2", rgbToHex(accent2.r,accent2.g,accent2.b));
 
-      // Glows derived from accents (rgba strings)
       root.setProperty("--accentGlow", `rgba(${accent1.r},${accent1.g},${accent1.b},.28)`);
       root.setProperty("--accent2Glow", `rgba(${accent2.r},${accent2.g},${accent2.b},.22)`);
     }
 
-    function computePaletteFromImage(img){
+    function computePalette(img){
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
-      // Downscale for speed (still enough for palette)
       const targetW = 180;
       const scale = targetW / img.naturalWidth;
       const w = targetW;
-      const h = Math.round(img.naturalHeight * scale);
+      const h = Math.max(60, Math.round(img.naturalHeight * scale));
 
       canvas.width = w;
       canvas.height = h;
@@ -564,7 +298,7 @@
 
       const { data } = ctx.getImageData(0, 0, w, h);
 
-      // 1) Background color: average of edges (margin ~10%)
+      // Background: average edges
       const margin = Math.max(8, Math.floor(Math.min(w,h) * 0.10));
       let sumR=0,sumG=0,sumB=0,count=0;
 
@@ -573,8 +307,7 @@
           const isEdge = (x < margin || x >= w - margin || y < margin || y >= h - margin);
           if(!isEdge) continue;
           const i = (y*w + x)*4;
-          const a = data[i+3];
-          if(a < 200) continue;
+          if(data[i+3] < 220) continue;
           sumR += data[i];
           sumG += data[i+1];
           sumB += data[i+2];
@@ -583,40 +316,31 @@
       }
       const bg = count ? { r: Math.round(sumR/count), g: Math.round(sumG/count), b: Math.round(sumB/count) } : { r:5,g:11,b:26 };
 
-      // 2) Accent colors: pick the most saturated colors (quantized)
+      // Accents: pick top saturated buckets
       const buckets = new Map();
-      const step = 6; // sampling stride
+      const step = 6;
+
       for(let y=0;y<h;y+=step){
         for(let x=0;x<w;x+=step){
           const i = (y*w + x)*4;
-          const a = data[i+3];
-          if(a < 220) continue;
+          if(data[i+3] < 230) continue;
 
           const r = data[i], g = data[i+1], b = data[i+2];
           const { s, l } = rgbToHsl(r,g,b);
-
-          // Filter: ignore very dark/very bright/low saturation pixels (text & white UI)
           if(s < 0.35) continue;
           if(l < 0.18 || l > 0.85) continue;
 
-          // Quantize to reduce noise
           const qr = Math.round(r/24)*24;
           const qg = Math.round(g/24)*24;
           const qb = Math.round(b/24)*24;
           const key = `${qr},${qg},${qb}`;
-
           buckets.set(key, (buckets.get(key) || 0) + 1);
         }
       }
 
-      // Pick top 2 buckets
       let top = [...buckets.entries()].sort((a,b)=> b[1]-a[1]).slice(0, 4).map(e => e[0]);
-      // Fallback if not enough saturated colors found
-      if(top.length < 2){
-        top = ["0,120,212","0,183,195"];
-      }
+      if(top.length < 2) top = ["0,120,212","0,183,195"];
 
-      // Ensure two different colors
       const pick = (k)=> {
         const [r,g,b]=k.split(",").map(n=>parseInt(n,10));
         return {r,g,b};
@@ -624,21 +348,19 @@
       let accent1 = pick(top[0]);
       let accent2 = pick(top.find(k => k !== top[0]) || top[0]);
 
-      // If accents too close to bg, push them slightly brighter
       const dist = (c1,c2)=> Math.abs(c1.r-c2.r)+Math.abs(c1.g-c2.g)+Math.abs(c1.b-c2.b);
       if(dist(accent1, bg) < 90) accent1 = mix(accent1, {r:255,g:255,b:255}, 0.18);
       if(dist(accent2, bg) < 90) accent2 = mix(accent2, {r:255,g:255,b:255}, 0.18);
 
-      setTheme({ bg: parseRgb(bg), accent1: parseRgb(accent1), accent2: parseRgb(accent2) });
+      setTheme(bg, accent1, accent2);
     }
 
     (function initAutoTheme(){
       const img = new Image();
-      // same-origin on GitHub Pages, but keep this for safety
       img.crossOrigin = "anonymous";
       img.src = THEME_SOURCE;
       img.onload = () => {
-        try { computePaletteFromImage(img); }
+        try { computePalette(img); }
         catch (e) { console.warn("Auto theme failed, using fallback.", e); }
       };
       img.onerror = () => console.warn("Theme source image not found:", THEME_SOURCE);
