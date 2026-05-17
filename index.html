@@ -12,7 +12,74 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ── Hero redesign ──────────────────────────────────────────── */
+    .heroLeft h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+    .heroLeft h1 em { font-style: italic; color: var(--muted, #94a3b8); }
+    .hero-tagline {
+      font-size: 0.95rem;
+      color: var(--muted, #94a3b8);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .hero-tagline strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .privacy-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: var(--muted, #94a3b8);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .privacy-note i { font-size: 16px; color: var(--muted, #94a3b8); flex-shrink: 0; margin-top: 1px; }
+    .heroRight { display: flex; flex-direction: column; justify-content: center; }
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      background: var(--bg1, #0d1320);
+      padding: 13px 16px;
+      transition: background 0.15s;
+    }
+    .feature-row:hover { background: rgba(255,255,255,0.04); }
+    .feature-icon { font-size: 16px; color: var(--muted, #94a3b8); padding-top: 2px; }
+    .feature-text { font-size: 0.875rem; line-height: 1.4; font-weight: 500; }
+    .feature-sub { font-size: 0.78rem; color: var(--muted, #94a3b8); font-weight: 400; margin-top: 2px; }
+    .beta-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: #fef9c3;
+      color: #854d0e;
+      border-radius: 4px;
+      padding: 1px 6px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+  </style>
 </head>
 
 <body>
@@ -40,25 +107,16 @@
     <!-- HERO -->
     <section class="hero">
       <div class="heroLeft">
-        <h1>Rijdt u vaker over de A24?</h1>
+        <h1>Betaal de A24<br><em>zonder gedoe</em></h1>
 
-        <p class="lead">
-          Dan weet u het: elke keer opnieuw uw kenteken en e‑mailadres invullen op e‑tol.nl.<br><br>
-          <strong>eTOL SmartPay</strong> onthoudt dat voor u — inclusief meerdere voertuigen. U kiest wanneer u betaalt, de app brengt u direct naar de officiële betaalpagina.
+        <p class="hero-tagline">
+          <strong>eTOL SmartPay</strong> onthoudt uw kenteken en e&#8209;mailadres — voor al uw voertuigen. Geen account, geen opgeslagen betaalgegevens. U betaalt via de officiële e&#8209;tol.nl pagina, wij brengen u er direct naartoe.
         </p>
-        <ul class="lead" style="margin-top:12px; padding-left:20px; line-height:2;">
-          <li>🚗 &nbsp;Kenteken &amp; e‑mail automatisch ingevuld</li>
-          <li>🔍 &nbsp;RDW verificatie — merk &amp; model direct bevestigd</li>
-          <li>🏦 &nbsp;Kies je bank, app navigeert de betaling</li>
-          <li>📋 &nbsp;Volledige sessiehistorie bijgehouden</li>
-          <li>🛰️ &nbsp;A24 GPS-bewaking — herinnering bij de tunnel <span style="font-size:11px;font-weight:600;background:#fef9c3;color:#854d0e;border-radius:4px;padding:1px 6px;margin-left:4px;">BETA</span></li>
-        </ul>
-        <p class="lead" style="margin-top:14px; color: var(--muted, #94a3b8); font-size: 0.92em;">
-          Minder tikken. Geen typefouten. Volledige controle.
-        </p>
-        <p class="lead" style="margin-top:10px; color: var(--muted, #94a3b8); font-size: 0.92em;">
-          Er bestaan automatische betaaldiensten voor de A24, maar die vragen om uw betaalgegevens en persoonlijke informatie. <strong style="color:inherit;">eTOL SmartPay werkt anders</strong> — volledig anoniem, geen account, geen server. Alles blijft op uw telefoon en wordt nooit gedeeld.
-        </p>
+
+        <div class="privacy-note">
+          <i class="ti ti-shield-lock"></i>
+          <span>Volledig anoniem. Alles blijft op uw telefoon — er wordt niets gedeeld of opgeslagen op een server.</span>
+        </div>
 
         <div class="ctaRow" id="download">
           <a class="btn btnPrimary" id="dlBtn"
@@ -88,36 +146,46 @@
         </p>
       </div>
 
-      <!-- HIGHLIGHTS PANEL -->
-      <aside class="panel">
-        <div class="panelTop">
-          <span class="panelTitle">Highlights</span>
-        </div>
-
-        <!-- Logo groot getoond zodat tekst leesbaar is -->
-        <div class="panelLogoWrap">
-          <a href="#screenshots" title="Bekijk screenshots">
-            <img src="etol_smartpay_logo.svg" class="panelLogo" alt="eTOL SmartPay logo">
-          </a>
-        </div>
-
-        <div class="panelBody">
-          <div class="kpi">
-            <strong>Meerdere kentekens (wagenpark)</strong>
-            <span>Na betaling worden gebruikte kentekens automatisch opgeslagen, zodat je snel kunt wisselen en zelf kiest voor welk voertuig je betaalt.</span>
+      <!-- FEATURE PANEL -->
+      <div class="heroRight">
+        <div class="feature-grid">
+          <div class="feature-row">
+            <i class="ti ti-id-badge feature-icon"></i>
+            <div>
+              <div class="feature-text">Automatisch ingevuld</div>
+              <div class="feature-sub">Kenteken &amp; e&#8209;mailadres opgeslagen per voertuig</div>
+            </div>
           </div>
-
-          <div class="kpi">
-            <strong>Herbruikbaar e-mailadres</strong>
-            <span>Het e-mailadres wordt lokaal onthouden, zodat je het niet telkens opnieuw hoeft in te voeren.</span>
+          <div class="feature-row">
+            <i class="ti ti-certificate feature-icon"></i>
+            <div>
+              <div class="feature-text">RDW verificatie</div>
+              <div class="feature-sub">Merk &amp; model direct bevestigd bij invoer</div>
+            </div>
           </div>
-
-          <div class="kpi">
-            <strong>Tolsessie historie + eerste-start wizard</strong>
-            <span>Bekijk eerdere sessies en start met een duidelijke onboarding wizard.</span>
+          <div class="feature-row">
+            <i class="ti ti-building-bank feature-icon"></i>
+            <div>
+              <div class="feature-text">Kies uw eigen bank</div>
+              <div class="feature-sub">App navigeert u rechtstreeks naar de betaling</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <i class="ti ti-history feature-icon"></i>
+            <div>
+              <div class="feature-text">Sessiehistorie</div>
+              <div class="feature-sub">Volledige betalingsgeschiedenis bijgehouden</div>
+            </div>
+          </div>
+          <div class="feature-row">
+            <i class="ti ti-map-pin feature-icon"></i>
+            <div>
+              <div class="feature-text">A24 GPS-bewaking <span class="beta-badge">BETA</span></div>
+              <div class="feature-sub">Herinnering bij nadering van de tunnel</div>
+            </div>
           </div>
         </div>
-      </aside>
+      </div>
     </section>
 
     <!-- FEATURES -->
@@ -163,8 +231,7 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
         <h3 class="cardTitle">🔍 RDW Kenteken Verificatie</h3>
-        <p>Tijdens het invoeren wordt uw kenteken live gecontroleerd via de RDW Open Data API. Merk en model verschijnen direct onder het veld — zo weet u zeker dat het juiste voertuig is geselecteerd.</p>
-        <p class="muted small" style="margin-top:6px;">Resultaat wordt lokaal opgeslagen.</p>
+        <p>Tijdens het invoeren wordt uw kenteken live gecontroleerd via de RDW Open Data API. Merk en model verschijnen direct onder het veld — zo weet u zeker dat het juiste voertuig is geselecteerd. Resultaat wordt lokaal opgeslagen.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
