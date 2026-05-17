@@ -2,7 +2,7 @@
 
 **eTOL SmartPay** is een gebruiksvriendelijke betaalassistent die het invoeren en verwerken van tolbetalingen via de officiële e‑TOL omgeving versnelt en vereenvoudigt.
 
-De app begeleidt gebruikers automatisch stap voor stap bij het invoeren van gegevens, zoals kenteken, e‑mail en het aantal ritten. Vervolgens wordt de gebruiker automatisch doorgestuurd naar de officiële e‑TOL betaalomgeving om de betaling via de eigen bank (**iDEAL**) af te ronden.
+De app begeleidt gebruikers automatisch stap voor stap bij het invoeren van gegevens, zoals kenteken (RDW geverifieerd), e‑mail en het aantal ritten. Vervolgens wordt de gebruiker automatisch doorgestuurd naar de officiële e‑TOL betaalomgeving om de betaling via de eigen bank (**iDEAL**) af te ronden.
 
 De volledige betalingstransactie vindt altijd plaats via de officiële e‑TOL website en de beveiligde bankomgeving van de gebruiker. **eTOL SmartPay slaat geen betaalgegevens op** en fungeert uitsluitend als hulpmiddel om het proces sneller, eenvoudiger en betrouwbaarder te maken.
 <p align="center">
