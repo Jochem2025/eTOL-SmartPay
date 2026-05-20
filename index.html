@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#050B1A" />
+  <meta name="theme-color" content="#070B18" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>eTOL SmartPay — A24 tol betaalapp voor Android</title>
@@ -114,7 +114,7 @@
   <header>
     <div class="wrap topbar">
       <div class="brand">
-        <img src="etol_smartpay_logo.svg" class="brandIcon" alt="eTOL SmartPay logo">
+        <img src="etol-icon.png" class="brandIcon" alt="eTOL SmartPay logo">
 
         <div class="brandText">
           <div class="brandName">eTOL SmartPay</div>
@@ -132,9 +132,21 @@
   <main class="wrap">
     <!-- HERO -->
     <section class="hero">
-      <div class="heroLeft">
-        <center><img src="etol_smartpay_logo.svg" alt="eTOL SmartPay" style="height:350px; width:auto; display:block; margin-bottom:1.5rem;"></center>
 
+      <!-- Volledige breedte header-banner -->
+      <div class="hero-banner-wrap">
+        <img
+          src="screenshots/SmartPay_header.png"
+          alt="eTOL SmartPay — A24 Tolbuddy"
+          class="hero-banner-img"
+          loading="eager"
+          decoding="async"
+          width="1500"
+          height="auto"
+        >
+      </div>
+
+      <div class="heroLeft">
         <h1 class="hero-tagline">
           Jouw gratis <strong>Tolbuddy</strong> voor het <strong>A24 toltraject</strong>.
         </h1>
@@ -394,7 +406,7 @@
      * - background = gemiddelde kleur van de randen (vaak app-background)
      * - accents = meest verzadigde kleuren uit het beeld (buttons/highlights)
      */
-    const THEME_SOURCE = "screenshots/SmartPay_1.jpg";
+    const THEME_SOURCE = "screenshots/SmartPay_header.png";
 
     function rgbToHex(r,g,b){
       const toHex = (n)=> n.toString(16).padStart(2,'0');

@@ -1,19 +1,19 @@
 /* ─── CSS-variabelen (script overschrijft op basis van screenshot palette) ─── */
 :root {
-  --bg0:         #050B1A;
-  --bg1:         #070F2A;
+  --bg0:         #070B18;
+  --bg1:         #0C1220;
   --border:      rgba(255,255,255,.12);
   --text:        rgba(255,255,255,.92);
   --muted:       rgba(255,255,255,.66);
   --muted2:      rgba(255,255,255,.44);
-  --accent:      #0078D4;
-  --accent2:     #00B7C3;
+  --accent:      #2563EB;
+  --accent2:     #3B82F6;
   --ok:          #39D98A;
   --shadow:      0 24px 60px rgba(0,0,0,.44);
   --radius:      20px;
   --max:         1100px;
-  --accentGlow:  rgba(0,120,212,.28);
-  --accent2Glow: rgba(0,183,195,.20);
+  --accentGlow:  rgba(37,99,235,.30);
+  --accent2Glow: rgba(59,130,246,.22);
   --headerH:     68px;
 }
 
@@ -144,7 +144,7 @@ header {
 
 /* ─── Hero ──────────────────────────────────────────────────────────────────── */
 .hero {
-  padding: 56px 0 24px;
+  padding: 40px 0 24px;
   display: grid;
   grid-template-columns: 1.25fr .75fr;
   gap: 32px;
@@ -152,7 +152,43 @@ header {
 }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 36px; }
+  .hero { grid-template-columns: 1fr; padding-top: 28px; }
+}
+
+/* ─── Hero banner (volledige breedte boven de kolommen) ─────────────────────── */
+.hero-banner-wrap {
+  grid-column: 1 / -1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 28px 64px rgba(0,0,0,.55), 0 0 0 1px rgba(37,99,235,.18);
+  margin-bottom: 4px;
+  width: 100%;
+  position: relative;
+}
+.hero-banner-wrap::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 70%, rgba(7,11,24,.70) 100%);
+  pointer-events: none;
+}
+.hero-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.hero-banner-wrap:hover .hero-banner-img {
+  transform: scale(1.015);
+}
+
+@media (max-width: 860px) {
+  .hero-banner-wrap { border-radius: 12px; }
+}
+@media (max-width: 480px) {
+  .hero-banner-wrap { border-radius: 10px; }
+  .hero-banner-img  { min-height: 140px; object-position: center center; }
 }
 
 .badge {
