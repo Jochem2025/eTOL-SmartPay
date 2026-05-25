@@ -71,6 +71,20 @@
       margin-bottom: 1.5rem;
     }
     .privacy-note i { font-size: 16px; color: var(--muted, #94a3b8); flex-shrink: 0; margin-top: 1px; }
+    .privacy-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 20px;
+    }
+    .privacy-points span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      line-height: 1.35;
+    }
+    .privacy-points .pp-plus { color: #3b82f6; font-size: 14px; flex-shrink: 0; }
+    .privacy-points .pp-check { color: #22c55e; font-size: 14px; flex-shrink: 0; }
     .heroRight { display: flex; flex-direction: column; justify-content: center; }
     .feature-grid {
       display: flex;
@@ -167,7 +181,15 @@
 
         <div class="privacy-note">
           <i class="ti ti-shield-lock"></i>
-          <span>Betaal in seconden via iDEAL, ontvang een <strong>GPS-herinnering</strong> bij de A24 — alles via jouw telefoon, geen account en geen tracking.</span>
+          <div class="privacy-points">
+            <span><i class="ti ti-bolt pp-plus"></i> iDEAL betaling in seconden</span>
+            <span><i class="ti ti-check pp-check"></i> Geen account vereist</span>
+            <span><i class="ti ti-satellite pp-plus"></i> GPS melding bij passage A24</span>
+            <span><i class="ti ti-check pp-check"></i> Geen tracking</span>
+            <span><i class="ti ti-device-mobile pp-plus"></i> Alles lokaal op je telefoon</span>
+            <span><i class="ti ti-check pp-check"></i> Geen advertenties</span>
+            <span><i class="ti ti-lock-open-off pp-check"></i> Geen verplichte bankkoppelingen</span>
+          </div>
         </div>
 
         <div class="ctaRow" id="download">
@@ -266,14 +288,14 @@
             <i class="ti ti-building-bank feature-icon"></i>
             <div>
               <div class="feature-text">Kies je bank</div>
-              <div class="feature-sub">18 iDEAL-banken — bank-app wordt automatisch geopend</div>
+              <div class="feature-sub">Bank app wordt automatisch geopend</div>
             </div>
           </div>
           <div class="feature-row">
             <i class="ti ti-currency-euro feature-icon"></i>
             <div>
               <div class="feature-text">Dynamische toltarieven</div>
-              <div class="feature-sub">Automatisch €1,57 of €9,49 op basis van voertuigklasse via RDW</div>
+              <div class="feature-sub">Automatisch op basis van voertuig gewicht klasse "Licht of Zwaar"</div>
             </div>
           </div>
 
