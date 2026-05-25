@@ -94,6 +94,20 @@
     .feature-icon { font-size: 16px; color: var(--muted, #94a3b8); padding-top: 2px; }
     .feature-text { font-size: 0.875rem; line-height: 1.4; font-weight: 500; }
     .feature-sub { font-size: 0.78rem; color: var(--muted, #94a3b8); font-weight: 400; margin-top: 2px; }
+    .feature-group-label {
+      padding: 8px 16px 7px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.025);
+      color: var(--gl-color, #94a3b8);
+      border-left: 3px solid var(--gl-color, #94a3b8);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feature-group-label i { font-size: 13px; }
     .beta-badge {
       display: inline-block;
       font-size: 0.65rem;
@@ -148,7 +162,7 @@
 
       <div class="heroLeft">
         <h1 class="hero-tagline">
-          Jouw gratis <strong>Tolbuddy</strong> voor de <strong>A24</strong>.
+          <strong>Simpel & Snel</strong>, de gratis <strong>Tolbuddy</strong> voor de <strong>A24</strong>.
         </h1>
 
         <div class="privacy-note">
@@ -208,6 +222,11 @@
       <div class="heroRight">
         <h2>Functionaliteiten</h2>
         <div class="feature-grid">
+
+          <!-- ── Kenteken & Betaling ── -->
+          <div class="feature-group-label" style="--gl-color:#3b82f6">
+            <i class="ti ti-credit-card"></i>Kenteken &amp; Betaling
+          </div>
           <div class="feature-row">
             <i class="ti ti-id-badge feature-icon"></i>
             <div>
@@ -226,7 +245,7 @@
             <i class="ti ti-certificate feature-icon"></i>
             <div>
               <div class="feature-text">RDW verificatie</div>
-              <div class="feature-sub">Merk &amp; model direct bevestigd bij invoer — tarief past zich automatisch aan</div>
+              <div class="feature-sub">Merk &amp; model direct bevestigd — tarief past zich automatisch aan</div>
             </div>
           </div>
           <div class="feature-row">
@@ -240,21 +259,33 @@
             <i class="ti ti-plus-minus feature-icon"></i>
             <div>
               <div class="feature-text">Aantal ritten instellen</div>
-              <div class="feature-sub">Stel 1 t/m 4 ritten in via de +/− teller — prijs wordt direct bijgewerkt</div>
+              <div class="feature-sub">1 t/m 4 ritten via +/− teller — prijs wordt direct bijgewerkt</div>
             </div>
           </div>
           <div class="feature-row">
             <i class="ti ti-building-bank feature-icon"></i>
             <div>
-              <div class="feature-text">Kies uw eigen bank</div>
-              <div class="feature-sub">bank-app wordt automatisch geopend</div>
+              <div class="feature-text">Kies je bank</div>
+              <div class="feature-sub">18 iDEAL-banken — bank-app wordt automatisch geopend</div>
             </div>
+          </div>
+          <div class="feature-row">
+            <i class="ti ti-currency-euro feature-icon"></i>
+            <div>
+              <div class="feature-text">Dynamische toltarieven</div>
+              <div class="feature-sub">Automatisch €1,57 of €9,49 op basis van voertuigklasse via RDW</div>
+            </div>
+          </div>
+
+          <!-- ── Overzicht & Geschiedenis ── -->
+          <div class="feature-group-label" style="--gl-color:#a78bfa">
+            <i class="ti ti-chart-bar"></i>Overzicht &amp; Geschiedenis
           </div>
           <div class="feature-row">
             <i class="ti ti-history feature-icon"></i>
             <div>
               <div class="feature-text">Tolsessie overzicht</div>
-              <div class="feature-sub">Drie tabbladen: Timeline · Betalingen · Tolritten — met GPS-data per passage</div>
+              <div class="feature-sub">Drie tabbladen: Timeline · Betalingen · Tolritten — met GPS-data</div>
             </div>
           </div>
           <div class="feature-row">
@@ -263,6 +294,18 @@
               <div class="feature-text">Kosten grafiek</div>
               <div class="feature-sub">Maandelijks overzicht van je totale tolkosten in één oogopslag</div>
             </div>
+          </div>
+          <div class="feature-row">
+            <i class="ti ti-file-type-pdf feature-icon"></i>
+            <div>
+              <div class="feature-text">PDF-export</div>
+              <div class="feature-sub">Exporteer je tolritten en betalingen als PDF voor eigen administratie</div>
+            </div>
+          </div>
+
+          <!-- ── GPS & Meldingen ── -->
+          <div class="feature-group-label" style="--gl-color:#22c55e">
+            <i class="ti ti-map-pin"></i>GPS &amp; Meldingen
           </div>
           <div class="feature-row">
             <i class="ti ti-map-pin feature-icon"></i>
@@ -275,14 +318,14 @@
             <i class="ti ti-radar feature-icon"></i>
             <div>
               <div class="feature-text">GPS-status in header</div>
-              <div class="feature-sub">Icoon toont live of detectie actief is, GPS uitstaat of bewaking uitgeschakeld is</div>
+              <div class="feature-sub">Live icoon: detectie actief · GPS uit · bewaking uitgeschakeld</div>
             </div>
           </div>
           <div class="feature-row">
             <i class="ti ti-navigation feature-icon"></i>
             <div>
               <div class="feature-text">Rijrichting detectie</div>
-              <div class="feature-sub">GPS herkent of je rijdt richting Zuid (Rozenburg) of Noord (Vlaardingen)</div>
+              <div class="feature-sub">Herkent richting Zuid (Rozenburg) of Noord (Vlaardingen)</div>
             </div>
           </div>
           <div class="feature-row">
@@ -292,20 +335,7 @@
               <div class="feature-sub">Dagelijkse herinnering tot tol betaald is — uitschakelbaar</div>
             </div>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-file-type-pdf feature-icon"></i>
-            <div>
-              <div class="feature-text">PDF-export</div>
-              <div class="feature-sub">Exporteer je tolritten en betalingen als PDF voor eigen administratie</div>
-            </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-currency-euro feature-icon"></i>
-            <div>
-              <div class="feature-text">Dynamische toltarieven</div>
-              <div class="feature-sub">Automatisch €1,57 of €9,49 op basis van voertuigklasse via RDW</div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
