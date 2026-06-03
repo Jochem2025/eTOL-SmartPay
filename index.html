@@ -167,6 +167,8 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      max-width: 420px;
+      margin: 0 auto;
     }
     .carousel-track-wrapper {
       overflow: hidden;
@@ -175,6 +177,7 @@
       background: rgba(255,255,255,0.03);
       box-shadow: 0 16px 40px rgba(0,0,0,.22);
       flex: 1;
+      max-height: 70vh;
     }
     .carousel-track {
       display: flex;
@@ -183,10 +186,15 @@
     .carousel-slide {
       min-width: 100%;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .carousel-slide img {
       width: 100%;
       height: auto;
+      max-height: 70vh;
+      object-fit: contain;
       display: block;
     }
     .carousel-btn {
@@ -234,8 +242,14 @@
     .carousel-dot:hover:not(.active) {
       background: rgba(255,255,255,0.35);
     }
+    @media (max-width: 860px) {
+      .carousel-container { max-width: 340px; }
+    }
     @media (max-width: 480px) {
-      .carousel-btn { width: 36px; height: 36px; font-size: 16px; }
+      .carousel-container { max-width: 280px; gap: 8px; }
+      .carousel-btn { width: 32px; height: 32px; font-size: 14px; }
+      .carousel-track-wrapper { border-radius: 14px; max-height: 55vh; }
+      .carousel-slide img { max-height: 55vh; }
     }
   </style>
 </head>
