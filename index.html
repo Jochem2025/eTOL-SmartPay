@@ -133,6 +133,110 @@
       vertical-align: middle;
       margin-left: 6px;
     }
+
+    /* ── Feature accordion ── */
+    .feature-accordion-toggle {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+      position: relative;
+    }
+    .feature-accordion-toggle:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .feature-chevron {
+      margin-left: auto;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+    .feature-accordion-toggle.active .feature-chevron {
+      transform: rotate(180deg);
+    }
+    .feature-accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .feature-accordion-panel.active {
+      max-height: 600px;
+    }
+
+    /* ── Carousel ── */
+    .carousel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .carousel-track-wrapper {
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      flex: 1;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .carousel-btn {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.07);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.18s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .carousel-btn:hover {
+      background: rgba(255,255,255,0.14);
+      transform: scale(1.08);
+    }
+    .carousel-btn:active {
+      transform: scale(0.95);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dot.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+    .carousel-dot:hover:not(.active) {
+      background: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 480px) {
+      .carousel-btn { width: 36px; height: 36px; font-size: 16px; }
+    }
   </style>
 </head>
 
@@ -223,183 +327,180 @@
         >
       </div>
 
-      <!-- FEATURE PANEL -->
+      <!-- FEATURE PANEL (interactive accordion) -->
       <div class="heroRight">
         <h2>Functionaliteiten</h2>
         <div class="feature-grid">
 
           <!-- ── Snel Betalen ── -->
-          <div class="feature-group-label" style="--gl-color:#3b82f6">
+          <div class="feature-group-label feature-accordion-toggle active" style="--gl-color:#3b82f6" data-target="fg-betalen">
             <i class="ti ti-credit-card"></i>Snel Betalen
+            <i class="ti ti-chevron-down feature-chevron"></i>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-bolt feature-icon"></i>
-            <div>
-              <div class="feature-text">Betaal in seconden via iDEAL</div>
-              <div class="feature-sub">Eén tik op de knop — je bankapp opent direct met het juiste bedrag</div>
+          <div class="feature-accordion-panel active" id="fg-betalen">
+            <div class="feature-row">
+              <i class="ti ti-bolt feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaal in seconden via iDEAL</div>
+                <div class="feature-sub">Eén tik op de knop — je bankapp opent direct met het juiste bedrag</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-id-badge feature-icon"></i>
-            <div>
-              <div class="feature-text">Automatisch ingevulde gegevens</div>
-              <div class="feature-sub">Kenteken, e-mailadres en voorkeurs­bank worden onthouden</div>
+            <div class="feature-row">
+              <i class="ti ti-id-badge feature-icon"></i>
+              <div>
+                <div class="feature-text">Automatisch ingevulde gegevens</div>
+                <div class="feature-sub">Kenteken, e-mailadres en voorkeurs­bank worden onthouden</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-car feature-icon"></i>
-            <div>
-              <div class="feature-text">Meerdere voertuigen beheren</div>
-              <div class="feature-sub">Wissel snel tussen kentekens — ideaal voor wagenparken of gezinnen</div>
+            <div class="feature-row">
+              <i class="ti ti-car feature-icon"></i>
+              <div>
+                <div class="feature-text">Meerdere voertuigen beheren</div>
+                <div class="feature-sub">Wissel snel tussen kentekens — ideaal voor wagenparken of gezinnen</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-currency-euro feature-icon"></i>
-            <div>
-              <div class="feature-text">Automatisch tarief op basis van voertuigklasse</div>
-              <div class="feature-sub">Licht (€ 1,57) of Zwaar (€ 9,49) — bepaald via RDW-categorie</div>
+            <div class="feature-row">
+              <i class="ti ti-currency-euro feature-icon"></i>
+              <div>
+                <div class="feature-text">Automatisch tarief op basis van voertuigklasse</div>
+                <div class="feature-sub">Licht (€ 1,57) of Zwaar (€ 9,49) — bepaald via RDW-categorie</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-plus-minus feature-icon"></i>
-            <div>
-              <div class="feature-text">Meerdere ritten in één betaling</div>
-              <div class="feature-sub">Stel 1 t/m 4 passages in — totaalprijs wordt direct bijgewerkt</div>
+            <div class="feature-row">
+              <i class="ti ti-plus-minus feature-icon"></i>
+              <div>
+                <div class="feature-text">Meerdere ritten in één betaling</div>
+                <div class="feature-sub">Stel 1 t/m 4 passages in — totaalprijs wordt direct bijgewerkt</div>
+              </div>
             </div>
           </div>
 
           <!-- ── Verificatie & Validatie ── -->
-          <div class="feature-group-label" style="--gl-color:#f59e0b">
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#f59e0b" data-target="fg-verificatie">
             <i class="ti ti-certificate"></i>Verificatie &amp; Validatie
+            <i class="ti ti-chevron-down feature-chevron"></i>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-car feature-icon"></i>
-            <div>
-              <div class="feature-text">RDW kentekenverificatie</div>
-              <div class="feature-sub">Merk, model en voertuigklasse worden live opgehaald bij invoer</div>
+          <div class="feature-accordion-panel" id="fg-verificatie">
+            <div class="feature-row">
+              <i class="ti ti-car feature-icon"></i>
+              <div>
+                <div class="feature-text">RDW kentekenverificatie</div>
+                <div class="feature-sub">Merk, model en voertuigklasse worden live opgehaald bij invoer</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-mail-check feature-icon"></i>
-            <div>
-              <div class="feature-text">E-mailadres validatie</div>
-              <div class="feature-sub">Directe controle op geldigheid — foutmeldingen vóór verzending</div>
+            <div class="feature-row">
+              <i class="ti ti-mail-check feature-icon"></i>
+              <div>
+                <div class="feature-text">E-mailadres validatie</div>
+                <div class="feature-sub">Directe controle op geldigheid — foutmeldingen vóór verzending</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-circle-check feature-icon"></i>
-            <div>
-              <div class="feature-text">Realtime betaalstatus</div>
-              <div class="feature-sub">Elke betaling wordt automatisch geverifieerd: gelukt, in behandeling of geannuleerd</div>
+            <div class="feature-row">
+              <i class="ti ti-circle-check feature-icon"></i>
+              <div>
+                <div class="feature-text">Realtime betaalstatus</div>
+                <div class="feature-sub">Elke betaling wordt automatisch geverifieerd: gelukt, in behandeling of geannuleerd</div>
+              </div>
             </div>
           </div>
 
           <!-- ── Overzicht & Administratie ── -->
-          <div class="feature-group-label" style="--gl-color:#a78bfa">
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#a78bfa" data-target="fg-overzicht">
             <i class="ti ti-chart-bar"></i>Overzicht &amp; Administratie
+            <i class="ti ti-chevron-down feature-chevron"></i>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-layout-list feature-icon"></i>
-            <div>
-              <div class="feature-text">Volledig sessie-overzicht</div>
-              <div class="feature-sub">Drie tabbladen — Timeline · Betalingen · Tolpassages — met statusfilters</div>
+          <div class="feature-accordion-panel" id="fg-overzicht">
+            <div class="feature-row">
+              <i class="ti ti-layout-list feature-icon"></i>
+              <div>
+                <div class="feature-text">Volledig sessie-overzicht</div>
+                <div class="feature-sub">Drie tabbladen — Timeline · Betalingen · Tolpassages — met statusfilters</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-chart-area-line feature-icon"></i>
-            <div>
-              <div class="feature-text">Kostengrafiek per maand</div>
-              <div class="feature-sub">Visueel overzicht van totale tolkosten — trends in één oogopslag</div>
+            <div class="feature-row">
+              <i class="ti ti-chart-area-line feature-icon"></i>
+              <div>
+                <div class="feature-text">Kostengrafiek per maand</div>
+                <div class="feature-sub">Visueel overzicht van totale tolkosten — trends in één oogopslag</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-file-export feature-icon"></i>
-            <div>
-              <div class="feature-text">PDF- en CSV-export</div>
-              <div class="feature-sub">Genereer rapportages voor je eigen administratie of boekhouding</div>
+            <div class="feature-row">
+              <i class="ti ti-file-export feature-icon"></i>
+              <div>
+                <div class="feature-text">PDF- en CSV-export</div>
+                <div class="feature-sub">Genereer rapportages voor je eigen administratie of boekhouding</div>
+              </div>
             </div>
           </div>
 
           <!-- ── GPS & Intelligente Meldingen ── -->
-          <div class="feature-group-label" style="--gl-color:#22c55e">
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#22c55e" data-target="fg-gps">
             <i class="ti ti-map-pin"></i>GPS &amp; Intelligente Meldingen
+            <i class="ti ti-chevron-down feature-chevron"></i>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-satellite feature-icon"></i>
-            <div>
-              <div class="feature-text">A24-detectie op de achtergrond <span class="beta-badge">BETA</span></div>
-              <div class="feature-sub">Automatische pushmelding bij nadering van de Maasdeltatunnel of Hollandtunnel</div>
+          <div class="feature-accordion-panel" id="fg-gps">
+            <div class="feature-row">
+              <i class="ti ti-satellite feature-icon"></i>
+              <div>
+                <div class="feature-text">A24-detectie op de achtergrond <span class="beta-badge">BETA</span></div>
+                <div class="feature-sub">Automatische pushmelding bij nadering van de Maasdeltatunnel of Hollandtunnel</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-navigation feature-icon"></i>
-            <div>
-              <div class="feature-text">Rijrichting herkenning</div>
-              <div class="feature-sub">Detecteert automatisch richting Noord (Vlaardingen) of Zuid (Rozenburg)</div>
+            <div class="feature-row">
+              <i class="ti ti-navigation feature-icon"></i>
+              <div>
+                <div class="feature-text">Rijrichting herkenning</div>
+                <div class="feature-sub">Detecteert automatisch richting Noord (Vlaardingen) of Zuid (Rozenburg)</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-bell-ringing feature-icon"></i>
-            <div>
-              <div class="feature-text">Betaalherinneringen</div>
-              <div class="feature-sub">Dagelijkse herinnering zolang een tolpassage onbetaald is — eenvoudig uit te schakelen</div>
+            <div class="feature-row">
+              <i class="ti ti-bell-ringing feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaalherinneringen</div>
+                <div class="feature-sub">Dagelijkse herinnering zolang een tolpassage onbetaald is — eenvoudig uit te schakelen</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-radar feature-icon"></i>
-            <div>
-              <div class="feature-text">Live GPS-status</div>
-              <div class="feature-sub">Statusbalk toont of detectie actief is, GPS ontbreekt, of bewaking is uitgeschakeld</div>
+            <div class="feature-row">
+              <i class="ti ti-radar feature-icon"></i>
+              <div>
+                <div class="feature-text">Live GPS-status</div>
+                <div class="feature-sub">Statusbalk toont of detectie actief is, GPS ontbreekt, of bewaking is uitgeschakeld</div>
+              </div>
             </div>
           </div>
 
           <!-- ── Privacy & Beveiliging ── -->
-          <div class="feature-group-label" style="--gl-color:#ef4444">
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#ef4444" data-target="fg-privacy">
             <i class="ti ti-shield-lock"></i>Privacy &amp; Beveiliging
+            <i class="ti ti-chevron-down feature-chevron"></i>
           </div>
-          <div class="feature-row">
-            <i class="ti ti-database-off feature-icon"></i>
-            <div>
-              <div class="feature-text">Geen externe server of database</div>
-              <div class="feature-sub">Alle gegevens blijven lokaal op het apparaat — er wordt niets verzonden</div>
+          <div class="feature-accordion-panel" id="fg-privacy">
+            <div class="feature-row">
+              <i class="ti ti-database-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen externe server of database</div>
+                <div class="feature-sub">Alle gegevens blijven lokaal op het apparaat — er wordt niets verzonden</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-user-off feature-icon"></i>
-            <div>
-              <div class="feature-text">Geen account vereist</div>
-              <div class="feature-sub">Direct starten zonder registratie, wachtwoorden of persoonlijke gegevens</div>
+            <div class="feature-row">
+              <i class="ti ti-user-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen account vereist</div>
+                <div class="feature-sub">Direct starten zonder registratie, wachtwoorden of persoonlijke gegevens</div>
+              </div>
             </div>
-          </div>
-          <div class="feature-row">
-            <i class="ti ti-eye-off feature-icon"></i>
-            <div>
-              <div class="feature-text">Geen tracking of advertenties</div>
-              <div class="feature-sub">Geen analytics, geen cookies, geen profiling — volledig transparant</div>
+            <div class="feature-row">
+              <i class="ti ti-eye-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen tracking of advertenties</div>
+                <div class="feature-sub">Geen analytics, geen cookies, geen profiling — volledig transparant</div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
     </section>
-
-<section id="screenshots">
-      <div class="sectionTitle">
-        <h2>Zo ziet de app eruit</h2>
-        <div class="sectionHint">Klik voor volledige weergave</div>
-      </div>
-
-      <div class="shots">
-        <a class="shot" href="screenshots/SmartPay_Overview.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Overview.jpg" alt="SmartPay hoofdscherm" loading="lazy" decoding="async"></a>
-        <a class="shot" href="screenshots/SmartPay_Sessiegeschiedenis.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Sessiegeschiedenis.jpg" alt="SmartPay sessiegeschiedenis" loading="lazy" decoding="async"></a>
-        <a class="shot" href="screenshots/SmartPay_Verwerking.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Verwerking.jpg" alt="SmartPay betaalverwerking" loading="lazy" decoding="async"></a>
-        <a class="shot" href="screenshots/SmartPay_Betaling.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Betaling.jpg" alt="SmartPay betaalscherm" loading="lazy" decoding="async"></a>
-        <a class="shot" href="screenshots/SmartPay_Notificatie.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Notificatie.jpg" alt="SmartPay GPS-notificatie" loading="lazy" decoding="async"></a>
-        <a class="shot" href="screenshots/SmartPay_Settings.jpg" target="_blank" rel="noopener"><img src="screenshots/SmartPay_Settings.jpg" alt="SmartPay instellingen" loading="lazy" decoding="async"></a>
-      </div>
-    </section>
-
-
 
     <!-- HOE WERKT HET -->
     <section>
@@ -427,7 +528,7 @@
       </div>
     </section>
 
-    <!-- EXTRA INFO -->
+    <!-- GOED OM TE WETEN -->
     <section>
       <div class="sectionTitle">
         <h2>Goed om te weten</h2>
@@ -451,6 +552,49 @@
       </div>
 
       </div>
+    </section>
+
+    <!-- SCREENSHOTS CAROUSEL -->
+    <section id="screenshots">
+      <div class="sectionTitle">
+        <h2>Zo ziet de app eruit</h2>
+        <div class="sectionHint">Gebruik de pijlen om meer te bekijken</div>
+      </div>
+
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-btn-prev" aria-label="Vorige screenshot">
+          <i class="ti ti-chevron-left"></i>
+        </button>
+
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <img src="screenshots/SmartPay_Overview.jpg" alt="SmartPay hoofdscherm" loading="eager" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Sessiegeschiedenis.jpg" alt="SmartPay sessiegeschiedenis" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Verwerking.jpg" alt="SmartPay betaalverwerking" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Betaling.jpg" alt="SmartPay betaalscherm" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Notificatie.jpg" alt="SmartPay GPS-notificatie" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Settings.jpg" alt="SmartPay instellingen" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-btn-next" aria-label="Volgende screenshot">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="carousel-dots"></div>
     </section>
 
 
@@ -689,6 +833,86 @@
               console.warn("eTOL versie ophalen mislukt:", err);
             });
         });
+    })();
+
+    // ── Feature accordion ───────────────────────────────────────────────────
+    (function initAccordion() {
+      const toggles = document.querySelectorAll('.feature-accordion-toggle');
+      toggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const panel = document.getElementById(targetId);
+          const isActive = this.classList.contains('active');
+
+          // Close all panels
+          toggles.forEach(function(t) {
+            t.classList.remove('active');
+            var p = document.getElementById(t.getAttribute('data-target'));
+            if (p) p.classList.remove('active');
+          });
+
+          // Open clicked if it wasn't already open
+          if (!isActive) {
+            this.classList.add('active');
+            if (panel) panel.classList.add('active');
+          }
+        });
+      });
+    })();
+
+    // ── Screenshot carousel ─────────────────────────────────────────────────
+    (function initCarousel() {
+      const track = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.querySelector('.carousel-btn-prev');
+      const nextBtn = document.querySelector('.carousel-btn-next');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      if (!track || slides.length === 0) return;
+
+      let current = 0;
+
+      // Create dots
+      slides.forEach(function(_, i) {
+        const dot = document.createElement('span');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', function() { goTo(i); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+      // Swipe support
+      var startX = 0;
+      var isDragging = false;
+      var wrapper = document.querySelector('.carousel-track-wrapper');
+
+      wrapper.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) goTo(current + 1);
+          else goTo(current - 1);
+        }
+      }, { passive: true });
     })();
   </script>
 </body>
