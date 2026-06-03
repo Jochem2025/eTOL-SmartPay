@@ -1030,7 +1030,8 @@
       var nav = document.getElementById('mainNav');
       if (!toggle || !nav) return;
 
-      toggle.addEventListener('click', function() {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         nav.classList.toggle('open');
         var isOpen = nav.classList.contains('open');
         toggle.setAttribute('aria-expanded', isOpen);
