@@ -269,16 +269,21 @@
       width: 300px;
       height: 540px;
       flex-shrink: 0;
+      /* iOS Safari: force correct overflow:hidden clipping on border-radius when children use transform */
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      isolation: isolate;
     }
     .carousel-track {
       display: flex;
       height: 100%;
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
     }
     .carousel-slide {
+      width: 100%;
       min-width: 100%;
+      flex: 0 0 100%;
       height: 100%;
-      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -298,6 +303,7 @@
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: var(--text);
       display: grid;
       place-items: center;
@@ -1010,7 +1016,9 @@
         if (index < 0) index = slides.length - 1;
         if (index >= slides.length) index = 0;
         current = index;
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        var translateVal = 'translateX(-' + (current * 100) + '%)';
+        track.style.transform = translateVal;
+        track.style.webkitTransform = translateVal;
         var dots = dotsContainer.querySelectorAll('.carousel-dot');
         dots.forEach(function(d, i) {
           d.classList.toggle('active', i === current);
