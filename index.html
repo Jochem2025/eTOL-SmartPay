@@ -363,6 +363,10 @@
       text-decoration: none;
       color: #464feb;
     }
+    /* Restrict link color to content areas only */
+    .why-section a {
+      color: #464feb;
+    }
     tr th, tr td {
       border: 1px solid #e6e6e6;
     }
@@ -372,8 +376,16 @@
 
     /* ── Why section ── */
     .why-section {
-      max-width: 800px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 32px;
+      max-width: 900px;
       margin: 0 auto;
+    }
+    .why-section .sectionTitle {
+      margin-bottom: 24px;
     }
     .why-section h3 {
       font-size: 1.25rem;
@@ -396,6 +408,11 @@
       line-height: 1.6;
       color: var(--muted, #94a3b8);
       margin-bottom: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .why-section {
+        padding: 24px;
+      }
     }
   </style>
 </head>
