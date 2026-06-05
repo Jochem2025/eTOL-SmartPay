@@ -411,6 +411,47 @@
         padding: 24px;
       }
     }
+
+    /* ── Idea section ── */
+    .idea-section {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .idea-section .sectionTitle {
+      margin-bottom: 24px;
+    }
+    .idea-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+      color: rgba(255,255,255,0.95);
+    }
+    .idea-section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted, #94a3b8);
+      margin: 0 0 1rem 0;
+    }
+    .idea-section ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .idea-section li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--muted, #94a3b8);
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .idea-section {
+        padding: 24px;
+      }
+    }
   </style>
 </head>
 
@@ -432,7 +473,7 @@
       </button>
       <nav class="nav" id="mainNav">
         <a class="chip" href="#how">Hoe werkt het</a>
-        <a class="chip" href="#why">Over de app</a>
+        <a class="chip" href="#idea">Over de app</a>
         <a class="chip" href="#screenshots">Screenshots</a>
         <a class="chip" href="#faq">FAQ</a>
         <a class="chip" href="#download">Download</a>
@@ -785,8 +826,8 @@
       </div>
     </section>
 
-    <!-- WAAROM DEZE APP -->
-    <section id="why" class="reveal why-section">
+    <!-- Het Waarom -->
+    <section id="idea" class="reveal idea-section">
       <div class="sectionTitle">
         <h2>Waarom?</h2>
       </div>
