@@ -9,35 +9,54 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://etol-smartpay.nl/privacy" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
 </head>
 <body>
+  <div class="noise" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="logo-link">
-        <img src="etol_smartpay_logo.svg" alt="eTOL SmartPay logo" width="32" height="32" />
-        <span class="logo-text">eTOL SmartPay</span>
-      </a>
+  <header>
+    <div class="wrap topbar">
+      <div class="brand">
+        <img src="etol-icon.png" class="brandIcon" alt="eTOL SmartPay logo">
+
+        <div class="brandText">
+          <div class="brandName">eTOL SmartPay</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu openen" id="navToggle">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <nav class="nav" id="mainNav">
+        <a class="chip" href="/">Home</a>
+        <a class="chip" href="/#how">Hoe werkt het</a>
+        <a class="chip" href="/#idea">Over de app</a>
+        <a class="chip" href="/#screenshots">Screenshots</a>
+        <a class="chip" href="/#faq">FAQ</a>
+        <a class="chip" href="/privacy">Privacybeleid</a>
+        <a class="chip" href="/#download">Download</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Volledige breedte header-banner -->
-  <div class="hero-banner-wrap">
-    <img
-      src="screenshots/SmartPay_header.png"
-      alt="eTOL SmartPay — A24 Tolbuddy"
-      class="hero-banner-img"
-      loading="eager"
-      decoding="async"
-      width="1500"
-      height="auto"
-    >
-  </div>
+  <main class="wrap">
+    <!-- Volledige breedte header-banner -->
+    <div class="hero-banner-wrap">
+      <img
+        src="screenshots/SmartPay_header.png"
+        alt="eTOL SmartPay — A24 Tolbuddy"
+        class="hero-banner-img"
+        loading="eager"
+        decoding="async"
+        width="1500"
+        height="auto"
+      >
+    </div>
 
-  <main style="max-width:760px;margin:80px auto 60px;padding:0 24px;color:rgba(255,255,255,.88);line-height:1.75;">
+    <section style="max-width:760px;margin:60px auto;color:rgba(255,255,255,.88);line-height:1.75;">
 
-    <h1 style="font-size:2rem;margin-bottom:.4em;">Privacybeleid</h1>
-    <p style="color:rgba(255,255,255,.55);margin-bottom:2.5em;">Laatst bijgewerkt: 26 mei 2026</p>
+      <h1 style="font-size:2rem;margin-bottom:.4em;">Privacybeleid</h1>
+      <p style="color:rgba(255,255,255,.55);margin-bottom:2.5em;">Laatst bijgewerkt: 26 mei 2026</p>
 
     <h2>1. Wie zijn wij?</h2>
     <p>eTOL SmartPay is een gratis Android-app waarmee gebruikers tol kunnen betalen op de A24 Blankenburgverbinding via het officiële e-TOL betaalsysteem. De app is ontwikkeld als persoonlijk hulpmiddel en wordt aangeboden zonder winstoogmerk.</p>
@@ -81,11 +100,65 @@
     <h2>9. Contact</h2>
     <p>Vragen over dit privacybeleid? Neem contact op via de informatie op <a href="https://etol-smartpay.nl" style="color:#3B82F6;">etol-smartpay.nl</a>.</p>
 
+    </section>
   </main>
 
-  <footer style="text-align:center;padding:32px 24px;color:rgba(255,255,255,.35);font-size:.85rem;">
-    &copy; 2026 eTOL SmartPay &mdash; <a href="/" style="color:rgba(255,255,255,.45);">Terug naar home</a>
+  <footer>
+    <div class="fineprint">
+      <div><strong>Disclaimer</strong></div>
+      <div>
+        Deze applicatie is een <strong>onofficiële Android-app</strong> en staat los van de officiële e‑TOL organisatie.
+        Gebruik is volledig op eigen risico. De ontwikkelaar is niet aansprakelijk voor foutieve invoer, gemiste betalingen/boetes,
+        of storingen in e‑TOL of betaalomgevingen.
+      </div>
+      <div>
+        <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
+      </div>
+      <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
+      <div class="footerLinks">
+        <a href="#" data-url="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">Download</a>
+        <span>•</span>
+        <a href="/privacy">Privacybeleid</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // ── Mobile hamburger nav toggle ────────────────────────────────────────────────
+    (function initNavToggle() {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('mainNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('open');
+        var isOpen = nav.classList.contains('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.innerHTML = isOpen
+          ? '<i class="ti ti-x"></i>'
+          : '<i class="ti ti-menu-2"></i>';
+      });
+
+      // Close nav when clicking a link
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close nav on outside click
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
