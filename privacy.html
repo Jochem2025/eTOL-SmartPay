@@ -10,6 +10,50 @@
   <link rel="canonical" href="https://etol-smartpay.nl/privacy" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+  <style>
+    /* ── Mobile hamburger nav ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+      .nav {
+        position: absolute;
+        top: var(--headerH);
+        right: 16px;
+        flex-direction: column;
+        background: rgba(12,18,32,0.96);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        gap: 6px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.2s, transform 0.2s;
+        mask-image: none;
+        -webkit-mask-image: none;
+        z-index: 999;
+        overflow: visible;
+      }
+      .nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .nav .chip { width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
