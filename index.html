@@ -658,46 +658,75 @@
 
       <div class="grid3" style="align-items:start; margin-bottom: 1.5rem;">
 
-      <div class="card" style="margin-top:0; border-left: 3px solid #ef4444;">
-        <h3 class="cardTitle">❌ Waarom niet automatische betaling?</h3>
+      <div class="card" style="margin-top:0; border-left: 3px solid #3b82f6;">
+        <h3 class="cardTitle">🎮 Volledige controle</h3>
         <p>
-          Bestaande automatische betalingssystemen vereisen vaak het opzetten van een incasso, het vooraf storten van saldo, of het delen van gevoelige persoonlijke en financiële gegevens met externe dienstverleners. 
-          Dit creëert afhankelijkheden en brengt privacyrisico's met zich mee.
+          <strong>Jij bepaalt wanneer je betaalt.</strong> Geen automatische incasso's, geen verplichte saldi, geen afhankelijkheden van externe partijen. 
+          Betaal rechtstreeks via iDEAL in jouw eigen bankapp—SmartPay heeft nooit toegang tot jouw bankgegevens.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top:0; border-left: 3px solid #ef4444;">
+        <h3 class="cardTitle">🔐 100% Privacy-first</h3>
+        <p>
+          <strong>Jouw gegevens, jouw toestel.</strong> Alles blijft lokaal op je telefoon. Geen tracking, geen externe servers, geen datauitwisseling met derden. 
+          Je kenteken en e-mailadres verlaten je telefoon nooit.
         </p>
       </div>
 
       <div class="card" style="margin-top:0; border-left: 3px solid #22c55e;">
-        <h3 class="cardTitle">✅ De SmartPay-aanpak</h3>
+        <h3 class="cardTitle">💰 Volledig gratis, geen verborgen kosten</h3>
         <p>
-          <strong>U behoud volledige controle.</strong> Geen automatische incasso's, geen verplichte saldo's, geen afhankelijkheden van externe partijen. 
-          U bepaalt zelf wanneer u betaalt—rechtstreeks via iDEAL in uw eigen bankapp, zonder gevoelige gegevens achter te laten.
-        </p>
-      </div>
-
-      <div class="card" style="margin-top:0; border-left: 3px solid #a78bfa;">
-        <h3 class="cardTitle">🚀 Intelligente GPS-herinnering</h3>
-        <p>
-          De app detecteert automatisch wanneer u door een toltunnel bent gereden en stuurt u een discreet herinnering. 
-          Herhaalde meldingen helpen ervoor te zorgen dat betalingen op tijd worden gedaan, waardoor aanmaningen en boetes voorkomen kunnen worden.
+          <strong>Wat je ziet, is wat je betaalt.</strong> De app is gratis, er zijn geen premium features, geen toeslag per transactie, en geen advertenties. 
+          Je betaalt alleen het toltarief—en niets meer.
         </p>
       </div>
 
       </div>
 
-      <div class="card" style="border-left: 3px solid #8b5cf6;">
-        <h3 class="cardTitle">De kernwaarden van SmartPay</h3>
-        <p>
-          <strong>Eenvoud.</strong> Geen registratie, geen ingewikkelde instellingen, geen accounts. Download, voer uw kenteken in, en betaal.
-        </p>
-        <p style="margin-top:0.75rem;">
-          <strong>Privacy.</strong> Alle gegevens blijven lokaal op uw telefoon. Geen tracking, geen externe servers, geen verborgen datauitwisseling met derden.
-        </p>
-        <p style="margin-top:0.75rem;">
-          <strong>Veiligheid.</strong> U betaalt rechtstreeks via iDEAL in uw eigen bankapp. SmartPay heeft nooit toegang tot uw bankgegevens.
-        </p>
-        <p style="margin-top:0.75rem; margin-bottom: 0;">
-          <strong>Transparantie.</strong> Geen verborgen kosten, geen toeslag per transactie. Volledig gratis, nu en in de toekomst.
-        </p>
+      <!-- Kernwaarden collapsible -->
+      <div style="display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.07); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden; margin-bottom: 1.5rem;">
+        <div class="feature-accordion-toggle" style="background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.9); padding: 16px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 10px;" data-target="corevalues-panel">
+          <i class="ti ti-bulb" style="font-size: 16px; flex-shrink: 0;"></i>
+          <span style="font-weight: 600; flex: 1;">De kernwaarden van SmartPay</span>
+          <i class="ti ti-chevron-down feature-chevron"></i>
+        </div>
+        <div class="feature-accordion-panel" id="corevalues-panel">
+          <div style="padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05);">
+            <div>
+              <h4 style="font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0 0 6px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-zap" style="color: #3b82f6; font-size: 16px;"></i> Eenvoud
+              </h4>
+              <p style="margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted);">
+                Geen registratie, geen ingewikkelde instellingen, geen accounts. Download, voer je kenteken in, en betaal.
+              </p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0 0 6px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-lock" style="color: #ef4444; font-size: 16px;"></i> Privacy
+              </h4>
+              <p style="margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted);">
+                Alle gegevens blijven lokaal op je telefoon. Geen tracking, geen externe servers, geen datauitwisseling met derden.
+              </p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0 0 6px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-shield-check" style="color: #22c55e; font-size: 16px;"></i> Veiligheid
+              </h4>
+              <p style="margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted);">
+                Je betaalt rechtstreeks via iDEAL in je eigen bankapp. SmartPay heeft nooit toegang tot je bankgegevens.
+              </p>
+            </div>
+            <div>
+              <h4 style="font-size: 0.875rem; font-weight: 600; color: rgba(255,255,255,0.9); margin: 0 0 6px; display: flex; align-items: center; gap: 8px;">
+                <i class="ti ti-eye" style="color: #a78bfa; font-size: 16px;"></i> Transparantie
+              </h4>
+              <p style="margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted);">
+                Geen verborgen kosten, geen toeslag per transactie. Volledig gratis, nu en in de toekomst.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -727,27 +756,42 @@
       </div>
     </section>
 
-    <!-- GOED OM TE WETEN -->
+    <!-- GOED OM TE WETEN (FAQ) -->
     <section class="reveal">
       <div class="sectionTitle">
-        <h2>Goed om te weten</h2>
+        <h2>Veelgestelde vragen</h2>
       </div>
 
       <div class="grid3" style="align-items:start;">
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
-        <h3 class="cardTitle">🔍 RDW Kentekencheck</h3>
-        <p>Je kenteken wordt live gecontroleerd bij de RDW. Merk, model en voertuigklasse verschijnen direct — zo weet je zeker dat het juiste tarief wordt berekend (licht of zwaar voertuig).</p>
+        <h3 class="cardTitle">❓ Wat gebeurt er als mijn GPS niet werkt?</h3>
+        <p>De app werkt perfect zonder GPS — je kan gewoon handmatig betalen. De GPS-herinnering is optioneel en werkt pas als je deze inschakelt. Geen betaling wordt ooit automatisch gedaan.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
-        <h3 class="cardTitle">🛰️ GPS-herinnering bij de A24</h3>
-        <p>Optionele achtergrondbewaking stuurt een pushmelding zodra je de Maasdeltatunnel of Hollandtunnel nadert. Werkt ook als de app gesloten is. Er wordt nooit automatisch betaald.</p>
+        <h3 class="cardTitle">🔋 Kost GPS veel batterij?</h3>
+        <p>De GPS-bewaking is geoptimaliseerd en gebruikt geen aanzienlijke batterij. De app checkt alleen periodiek je locatie en werkt ook in de achtergrond op een efficiënte manier.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
-        <h3 class="cardTitle">🍎 iOS-versie</h3>
-        <p>Een iPhone-versie staat op de planning en wordt verwacht in de loop van 2026. Momenteel is de app beschikbaar voor alle Android-toestellen (8.0+).</p>
+        <h3 class="cardTitle">📱 Kan ik de app op meerdere telefoons gebruiken?</h3>
+        <p>Ja, download de app op zoveel toestellen als je wilt. Alle gegevens (kentekens, betalingen, geschiedenis) zijn lokaal per apparaat opgeslagen.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #f59e0b;">
+        <h3 class="cardTitle">⏱️ Hoe lang is een betaallink geldig?</h3>
+        <p>Betaallinks via e-TOL zijn doorgaans enkele uren geldig. Als je een betaling niet voltooit, kan je de link opnieuw genereren door de app opnieuw te openen.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #8b5cf6;">
+        <h3 class="cardTitle">🍎 Wanneer komt iOS uit?</h3>
+        <p>We werken aan een iPhone-versie, gepland voor 2026. Momenteel is de app beschikbaar voor alle Android-toestellen (8.0+).</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #06b6d4;">
+        <h3 class="cardTitle">💳 Welke banken werken met iDEAL?</h3>
+        <p>Alle Nederlandse banken die iDEAL ondersteunen. De app laat alle beschikbare banken zien op het moment van betaling.</p>
       </div>
 
       </div>
