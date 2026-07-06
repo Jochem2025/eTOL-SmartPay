@@ -10,7 +10,8 @@
 	],
 	"settings": {
 		"chat.tools.terminal.autoApprove": {
-			"Out-File": true
+			"Out-File": true,
+			"Get-Item": true
 		}
 	}
 }
